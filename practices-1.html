@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practices-1</title>
+  </head>
+  <body>
+
+    <form>
+      <lable name="number">Give A Numbers Of Steps :</lable>
+      <input type="number" id="inputNumber" />
+    </form>
+
+    <button name="print" id="buttonPrint" onclick="onClickFunction()">
+      Print
+    </button>
+
+    <div id="body" style="width: 80vh; height: 80vh;"></div>
+
+    <script>
+      const body = document.getElementById('body');
+      function onClickFunction() {
+        const inputNumber = document.getElementById('inputNumber').value;
+
+        let fibonacciArr = [];
+        let valueOfNumber = 0;
+
+        for (let index = 0; index < parseInt(inputNumber, 10); index++) {
+          if (valueOfNumber === 0 && !fibonacciArr.length) {
+            fibonacciArr.push(1);
+            valueOfNumber = 1;
+          } else {
+            if (fibonacciArr.length === 1) {
+              fibonacciArr.push(2);
+              valueOfNumber = 2;
+            } else {
+              valueOfNumber = fibonacciArr[index - 2] + fibonacciArr[index - 1];
+              fibonacciArr.push(valueOfNumber);
+            }
+          }
+        }
+        body.innerHTML = fibonacciArr;
+      }
+    </script>
+  </body>
+</html>
